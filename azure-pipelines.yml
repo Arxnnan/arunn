@@ -1,0 +1,21 @@
+# This pipeline is triggered on commits to the 'main' branch
+trigger:
+- main
+
+# The pool defines the environment where the pipeline runs
+pool:
+  vmImage: ubuntu-latest
+
+# Define the steps of the pipeline
+steps:
+- script: |
+    echo "Creating a new directory..."
+    mkdir -p /tmp/my_test_directory
+
+    echo "Creating a file in the directory..."
+    echo "This is a test file created by the pipeline." > /tmp/my_test_directory/test_file.txt
+
+    echo "Listing the contents of the directory..."
+    ls -la /tmp/my_test_directory
+
+  displayName: 'Run Directory Operations'
